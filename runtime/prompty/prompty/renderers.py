@@ -19,7 +19,7 @@ class Jinja2Renderer(Invoker):
         self.name = self.prompty.file.name
 
     def invoke(self, data: any) -> any:
-        env = Environment(loader=DictLoader(self.templates))
+        env = Environment(loader=DictLoader(self.templates), autoescape=True)
         t = env.get_template(self.name)
         generated = t.render(**data)
         return generated
